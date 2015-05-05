@@ -76,7 +76,7 @@ export default class Slideshow extends EventEmitter {
         if (_(this).interval) { return; }
 
         this.next();
-        _(this).interval = timer.interval(() => this.next(), 3000);
+        _(this).interval = timer.interval(() => this.next(), 4000);
     }
 
     halt() {
