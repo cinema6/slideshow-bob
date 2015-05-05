@@ -1,8 +1,11 @@
 import url from 'url';
+import Runner from '../lib/Runner.js';
 
 const { query: { id } } = url.parse(window.location.href, true);
 const listeners = {
-    load: []
+    load: [],
+    play: [],
+    pause: []
 };
 
 export function send(event, data = {}) {
@@ -30,5 +33,5 @@ window.addEventListener('message', event => {
         throw new Error(`${method} method is not supported.`);
     }
 
-    listeners[method].forEach(handler => handler(...args));
+    Runner.run(() => listeners[method].forEach(handler => handler(...args)));
 }, false);

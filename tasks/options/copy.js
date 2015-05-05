@@ -21,7 +21,7 @@ module.exports = {
                 expand: true,
                 cwd: 'public',
                 src: [
-                    '**/*.{png,jpg,jpeg,gif,webp,svg}'
+                    '**/*.{png,jpg,jpeg,gif,webp,svg,mp3}'
                 ],
                 dest: '.tmp/<%= settings.distDir %>/<%= _version %>'
             }

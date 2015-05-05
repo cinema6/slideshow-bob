@@ -36,6 +36,10 @@ html, body {
         width:2000%; height:100%;
         list-style: none;
         padding:0; margin:0;
+        transform: translateX(5%);
+        -webkit-transform: translateX(5%);
+        -webkit-transition: -webkit-transform 0.5s;
+        transition: transform 0.5s;
     }
         .gallery__item {
             width:5%; height:100%;
