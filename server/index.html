@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <title>C6Embed Server</title>
+        <script src="https://wzrd.in/standalone/jquery@latest"></script>
+        <script>
+            window.$ = window.jquery;
+        </script>
+    </head>
+    <body>
+        <iframe src="./.build/index.html?id=some_id" width="1280" height="720" frameborder="0" scrolling="no"></iframe>
+        <script>
+            var player = $('iframe').prop('contentWindow');
+
+            function call(method, args) {
+                player.postMessage(JSON.stringify({
+                    method: method,
+                    args: args
+                }), '*');
+            }
+
+            function handleReady(data) {
+                call('load', [[
+                    {
+                        "type" : "product",
+                        "image" : {
+                            "url_full" : "https://img1.etsystatic.com/047/0/6376238/il_570xN.671941429_hh2m.jpg",
+                            "url_icon" : "https://img1.etsystatic.com/047/0/6376238/il_75x75.671941429_hh2m.jpg",
+                            "hex_code": "A1BD92",
+                            "is_black_and_white": false,
+                            "full_height": 641,
+                            "full_width": 800
+                        },
+                        "title": "Original watercolor painting Weeping Willow tree and stream Hand painted art card",
+                        "description": "This is an original watercolor painting inspired by Weeping Willows and streams.That is one of my favorite trees.\n\nTITLE: Round Paintings 123\n\n-This is a hand painted art piece, not a print.\n-Paper size 6 x 8 inches (15,2 x 20,3 cm )\n-Painting size : 4,5 inches as diameter (11,5 cm as diameter )\n-Paper is 300 gsm (140 lb ) , acid free ,100% cotton , smooth , hot pressed watercolor paper.\n-Paints are lightfast , artists quality watercolors and acrylic ink .\n\n-The painting will be sent signed and dated in pencil at the back by me.\n-You will get the exact painting shown on the image.\n-I try to reflect the original colors as much as possible but there may be slight difference in color due to different monitor types.\n-Painting is not framed or matted.\n\n-I ship with registered airmail with a tracking number.\n-It will be packaged safely in a clear sheet protector between tough cardboards and in bubbled envelope.\n-Shipping is $6 to everywhere worldwide.I don&#39;t take additional shipping fee for multiple paintings with same dimensions you purchased at once.\n-Please see &#39;&#39;shipping and policies&#39;&#39; section for more information.\n\nThank you.\n\nBluePalette Â© all rights reserved",
+                        "data" : {
+                            "currency_code" : "USD",
+                            "price" : "22.00",
+                            "url"   : "https://www.etsy.com/listing/208393755/original-watercolor-painting-weeping?utm_source=cinema6&utm_medium=api&utm_campaign=api"
+                        }
+                    },
+                    {
+                        "type" : "product",
+                        "image" : {
+                            "url_full": "https://img0.etsystatic.com/047/0/6376238/il_570xN.740406820_cf68.jpg",
+                            "url_icon": "https://img0.etsystatic.com/047/0/6376238/il_75x75.740406820_cf68.jpg",
+                            "hex_code": "A7B8A2",
+                            "is_black_and_white": false,
+                            "full_height": 660,
+                            "full_width": 800
+                        },
+                        "title": "April showers Original watercolor painting Rain on spring flowers",
+                        "description": "This is an original watercolor painting inspired by rain and april showers.\n\nTITLE: Round Paintings 222\n\n-This is a hand painted art piece, not a print.\n-Paper size 6 x 8 inches (15,2 x 20,3 cm )\n-Painting size : 4,5 inches as diameter (11,5 cm as diameter )\n-Paper is 300 gsm (140 lb ) , acid free ,50% cotton , textured, cold pressed watercolor paper.\n-Paints are lightfast , artists quality watercolors and acrylic ink .\n\n-The painting will be sent signed and dated in pencil at the back by me.\n-You will get the exact painting shown on the image.\n-I try to reflect the original colors as much as possible but there may be slight difference in color due to different monitor types.\n-Painting is not framed or matted.\n\n-I ship with registered airmail with a tracking number.\n-It will be packaged safely in a clear sheet protector between tough cardboards and in bubbled envelope.\n-Shipping is $6 to everywhere worldwide.I don&#39;t take additional shipping fee for multiple paintings with same dimensions you purchased at once.\n-Please see &#39;&#39;shipping and policies&#39;&#39; section for more information.\n\nThank you.\n\nBluePalette Â© all rights reserved",
+                        "data" : {
+                            "currency_code" : "USD",
+                            "price" : "20.00",
+                            "url": "https://www.etsy.com/listing/183113606/original-illustration-bicycle-watercolor?utm_source=cinema6&utm_medium=api&utm_campaign=api",
+                        }
+                    }
+                ]]);
+            }
+
+            $(window).on('message', function(event) {
+                var data = JSON.parse(event.originalEvent.data);
+
+                switch (data.event) {
+                case 'ready':
+                    return handleReady(data.data);
+                }
+            });
+        </script>
+    </body>
+</html>
