@@ -1,6 +1,6 @@
 {
   "name": "slideshow-bob",
-  "version": "0.1.0-rc1",
+  "version": "0.1.0-rc2",
   "description": "Fancy slideshow canvas player",
   "main": "src/main.js",
   "scripts": {
